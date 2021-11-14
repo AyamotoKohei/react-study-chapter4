@@ -23,3 +23,13 @@ export const withResult = <T, A extends any[], E extends Error>(
     }
   }
 };
+
+// getUser: (userId:string) => Promise<User>
+const data = await withResult(getUser)('patty');
+
+if (data.isErr()) {
+  console.error(data.err);
+} else {
+  const user = data.val;
+  console.log(`Hello ${user.name}`);
+}
